@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:fragment="header-css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css/}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/5.0.10/web-fonts-with-css/css/fontawesome-all.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <title>Cukurin</title>
+</head>
+
+<body>
+    <div th:fragment="header">
+        <header id="site-header" class="w3lhny-head fixed-top">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg stroke px-0">
+                    <h1>
+                        <a class="navbar-brand">
+                            Cukurin
+                        </a>
+                    </h1>
+                    <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                            data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav mx-lg-auto">
+                            <li><a href="/" class="nav-link">Home</a></li>
+                            <li><a href="/profile" th:href="@{/profile}" class="nav-link">profile</a></li>
+                            <li><a href="/company" th:href="@{/company}" class="nav-link">company</a></li>
+                            <li><a href="/service" th:href="@{/service}" class="nav-link">service</a></li>
+                            <li><a href="/collaboration" th:href="@{/collaboration}" class="nav-link">collaboration</a></li>
+
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+
+                            <li class="nav-item dropdown">
+
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-door-open"></i>Dashboard</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item">
+                                            <form action="/logout" method="post">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>Logout</button>
+                                            </form>
+                                        </a>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="login" class = "nav-link "><i class="bi bi-box-arrow-right"></i>login</a>
+                            </li>
+                        </ul>
+
+
+                        <!--/search-right-->
+                    </div>
+
+                </nav>
+            </div>
+
+
+            <!-- //search -->
+        </header>
+
+        <script>
+    on('click', '.navbar .dropdown > a', function(e) {
+    if (select('#navbar').classList.contains('navbar-mobile')) {
+      e.preventDefault()
+      this.nextElementSibling.classList.toggle('dropdown-active')
+    }
+  }, true)
+</script>
+    </div>
+
+</body>
+
+</html>
