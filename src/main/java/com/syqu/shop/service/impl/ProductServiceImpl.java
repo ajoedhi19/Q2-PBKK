@@ -26,9 +26,7 @@ public class ProductServiceImpl implements ProductService {
     public void edit(long id, Product newProduct) {
         Product found = productRepository.getOne(id);
         found.setName(newProduct.getName());
-        found.setImageUrl(newProduct.getImageUrl());
-        found.setDescription(newProduct.getDescription());
-        found.setPrice(newProduct.getPrice());
+        found.setPrice(newProduct.getHarga());
         save(newProduct);
     }
 
@@ -42,15 +40,6 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findById(id);
     }
 
-    @Override
-    public List<Product> findAllByOrderByIdAsc() {
-        return productRepository.findAllByOrderByIdAsc();
-    }
-
-    @Override
-    public List<Product> findAllByCategoryId(long categoryId) {
-        return productRepository.findAllByCategoryId(categoryId);
-    }
 
     @Override
     public long count() {

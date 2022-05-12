@@ -18,10 +18,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "username", unique = true)
+    @Column(name = "name", unique = true)
     @NotEmpty
     @NotNull
-    private String username;
+    private String name;
 
     @Column(name = "email", unique = true)
     @Email
@@ -33,28 +33,35 @@ public class User {
     @NotNull
     private String password;
 
-    @NotEmpty
-    @NotNull
-    private String passwordConfirm;
+    @Column(name = "born_date")
+    private Date bornDate;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
-    @Column(name = "last_name")
-    private String lastName;
-
-    @Column(name = "age")
-    private int age;
-
-    @Column(name = "city")
-    private String city;
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "gender")
     @NotEmpty
     @NotNull
     private String gender;
 
-    @Column(name = "balance")
-    private BigDecimal balance;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private User user;
+
+    @Override
+    public boolean equals(Object u) {
+        if (this == u) return true;
+        if (u == null || getClass() != u.getClass()) return false;
+        User user = (User) u;
+
+        return id == user.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 }

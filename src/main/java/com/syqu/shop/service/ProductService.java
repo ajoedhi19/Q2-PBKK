@@ -9,7 +9,5 @@ public interface ProductService {
     void edit(long id, Product newProduct);
     void delete(long id);
     Product findById(long id);
-    List<Product> findAllByOrderByIdAsc();
-    List<Product> findAllByCategoryId(long categoryId);
     long count();
 }

@@ -10,40 +10,41 @@ import java.util.Objects;
 
 @Data
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name = "service")
+public class Service {
 
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "name_product")
+    @Column(name = "name_service")
     @NotNull
     @NotEmpty
-    private String nameProduct;
+    private String nameService;
+
 
     @Column(name = "harga")
     @NotNull
+    @NotEmpty
     private int harga;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
-    private Product product;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "service", cascade = CascadeType.ALL)
+    private Service service;
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
+    public boolean equals(Object s) {
+        if (this == s) return true;
+        if (s == null || getClass() != s.getClass()) return false;
+        Service service = (Service) s;
 
-        return id == product.getId();
+        return id == service.getId();
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
-
 
 
 
